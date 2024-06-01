@@ -9,12 +9,14 @@ import StudentReviewsSlider from "./StudentReviewsSlider";
 import UseUser from "../../hooks/UseUser";
 import UseSecurity from "../../hooks/UseSecurity";
 import { AuthContext } from "../../../utilities/AuthProvider";
+import { ScaleLoader } from "react-spinners";
 
 const Classes = () => {
   const [classes, setClasses] = useState([]);
   const [enrolledClasses, setEnrolledClasses] = useState([]);
   const fetchData = UseFetch();
   const useSecure = UseSecurity();
+  const [loading, setLoading] = useState(true);
   const { currentUser } = UseUser();
   const role = currentUser?.role;
   // console.log("role", currentUser);
@@ -24,6 +26,7 @@ const Classes = () => {
       .get("/api/classes")
       .then((res) => {
         setClasses(res.data);
+        setLoading(false);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -32,7 +35,9 @@ const Classes = () => {
     // console.log(id);
     useSecure
       .get(`/api/enrolled-classes/${currentUser?.email}`)
-      .then((res) => setEnrolledClasses(res.data))
+      .then((res) => {
+        setEnrolledClasses(res.data);
+      })
       .catch((err) => console.log(err));
 
     if (!currentUser) {
@@ -59,6 +64,19 @@ const Classes = () => {
         }
       });
   };
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center align-middle h-screen">
+        <ScaleLoader
+          color="#f7a5b9"
+          height={60}
+          margin={3}
+          radius={3}
+          width={5}
+        />
+      </div>
+    );
+  }
   return (
     <div className="md:w-[80%] mx-auto my-36">
       <div>
