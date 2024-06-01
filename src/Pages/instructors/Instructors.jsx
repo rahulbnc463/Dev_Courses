@@ -2,18 +2,34 @@ import React, { useEffect, useState } from "react";
 import UseFetch from "../../hooks/UseFetch";
 import demo from "../../assets/error/instructor_demo.png";
 import CardAll_instructor from "./CardAll_instructor";
+import { ScaleLoader } from "react-spinners";
 
 const Instructors = () => {
   const [instructors, setInstructors] = useState([]);
+  const [loading, setLoading] = useState(true);
   const FetchData = UseFetch();
   useEffect(() => {
     FetchData.get("/api/instructors").then((data) => {
       setInstructors(data.data);
+      setLoading(false);
     });
     // console.log(response.data);
   }, []);
 
   // console.log(instructors);
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center align-middle h-screen">
+        <ScaleLoader
+          color="#f7a5b9"
+          height={60}
+          margin={3}
+          radius={3}
+          width={5}
+        />
+      </div>
+    );
+  }
   return (
     <div className="md:w-[80%] mx-auto my-36">
       <div>
