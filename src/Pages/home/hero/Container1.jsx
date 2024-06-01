@@ -1,6 +1,11 @@
 import React from "react";
 import banner1 from "../../../assets/home/banner1.jpg";
+import { useNavigate } from "react-router-dom";
 const Container1 = () => {
+  const navigate = useNavigate();
+  const handleClass = () => {
+    navigate("api/classes");
+  };
   return (
     <div
       className="min-h-screen bg-cover"
@@ -22,10 +27,16 @@ const Container1 = () => {
               </p>
             </div>
             <div className="flex flex-wrap items-center gap-5">
-              <button className="px-7 py-3 rounded-lg bg-secondary font-bold uppercase">
+              <button
+                onClick={handleClass}
+                className="px-7 py-3 rounded-lg bg-secondary font-bold uppercase"
+              >
                 Start Now
               </button>
-              <button className="px-7 py-3 rounded-lg border hover:bg-primary transition ease-in-out duration-300 font-bold uppercase">
+              <button
+                onClick={handleClass}
+                className="px-7 py-3 rounded-lg border hover:bg-primary transition ease-in-out duration-300 font-bold uppercase"
+              >
                 View Course
               </button>
             </div>
