@@ -115,7 +115,7 @@ const SingleClass = () => {
                     <div>
                       <span className="text-secondary">
                         Last Update:{" "}
-                        <a href="#" className="text-black ml-1">
+                        <a href="#" className="text-black dark:text-white ml-1">
                           {new Date(course?.submitted).toLocaleDateString()}
                         </a>
                       </span>
