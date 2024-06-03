@@ -91,8 +91,7 @@ To set up the project locally, follow these steps:
 
 - Home Page
 
-![Screenshot](src
-/assets//Screenshots/Home-light.png)
+![Screenshot](src/assets/Screenshots/Home-light.png)
 
 
 ## Contributing
