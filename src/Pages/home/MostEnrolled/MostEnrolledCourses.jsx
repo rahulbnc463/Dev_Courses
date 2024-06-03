@@ -3,20 +3,35 @@ import { useState } from "react";
 import { useEffect } from "react";
 import UseFetch from "../../../hooks/UseFetch";
 import Card from "./Card";
+import { ScaleLoader } from "react-spinners";
 
 const MostEnrolledCourses = () => {
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
   const FetchData = UseFetch();
   useEffect(() => {
     const fetchClasses = async () => {
       const response = await FetchData.get("/api/classes/all");
       // console.log(response.data);
       setData(response.data);
+      setLoading(false);
     };
     fetchClasses();
   }, []);
   // console.log(data);
-
+ if (loading) {
+    return (
+      <div className="flex justify-center items-center align-middle h-screen">
+        <ScaleLoader
+          color="#f7a5b9"
+          height={60}
+          margin={3}
+          radius={3}
+          width={5}
+        />
+      </div>
+    );
+  }
   return (
     <div className="md:w-[80%] mx-auto my-36">
       <div>
