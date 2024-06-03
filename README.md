@@ -93,6 +93,20 @@ To set up the project locally, follow these steps:
 
 ![Screenshot](src/assets/Screenshots/Home-light.png)
 
+- Class Page
+![Screenshot](src/assets/Screenshots/Classes-dark.png)
+
+- Instructor Page
+![Screenshot](src/assets/Screenshots/Instructor-dark.png)
+  
+- User Dashboard
+![Screenshot](src/assets/Screenshots/User-dashboard.png)
+
+-Admin Manage
+![Screenshot](src/assets/Screenshots/Admin-manage.png)
+
+-Admin Class
+![Screenshot](src/assets/Screenshots/Admin-class.png)
 
 ## Contributing
 
